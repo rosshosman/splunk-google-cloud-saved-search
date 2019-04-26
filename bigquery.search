@@ -1,0 +1,11 @@
+BigQuery rule to search for public datasets
+
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.metadata.@type"="type.googleapis.com/google.cloud.audit.BigQueryAuditMetadata" "data.protoPayload.metadata.datasetChange.dataset.acl.policy.bindings{}.members{}"="allAuthenticatedUsers"
+
+BigQuery rule to search for datasets accessible by users with gmail.com addresses
+
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.metadata.@type"="type.googleapis.com/google.cloud.audit.BigQueryAuditMetadata" "data.protoPayload.metadata.datasetChange.dataset.acl.policy.bindings{}.members{}"="*@gmail.com"
+
+BigQuery rule to search for datasets accessible by groups with googlegroups.com addresses
+
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.metadata.@type"="type.googleapis.com/google.cloud.audit.BigQueryAuditMetadata" "data.protoPayload.metadata.datasetChange.dataset.acl.policy.bindings{}.members{}"="*@googlegroups.com"
