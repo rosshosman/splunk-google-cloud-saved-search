@@ -1,0 +1,7 @@
+Detect allow ingress to all policies
+
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.methodName"="v1.compute.firewalls.insert" "data.protoPayload.request.alloweds{}.IPProtocol"="all" "data.protoPayload.request.direction"="INGRESS"
+
+Don't allow policies that expose every port
+
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.methodName"="v1.compute.firewalls.insert" "data.protoPayload.request.direction"="INGRESS" ("data.protoPayload.request.alloweds{}.IPProtocol"="tcp" OR "data.protoPayload.request.alloweds{}.IPProtocol"="udp") NOT "data.protoPayload.request.alloweds{}.ports{}"="*"
