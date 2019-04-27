@@ -1,0 +1,7 @@
+Cloud SQL rule to search for publicly exposed instances
+
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.request.@type"="type.googleapis.com/cloudsql.admin.InstancesUpdateRequest"  "data.protoPayload.request.resource.settings.ipConfiguration.aclEntry{}.value"="0.0.0.0/0" NOT "data.protoPayload.request.resource.settings.ipConfiguration.requireSsl"="*"
+
+Cloud SQL rule to search for publicly exposed instances (SSL enabled)
+
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.request.@type"="type.googleapis.com/cloudsql.admin.InstancesUpdateRequest" "data.protoPayload.request.resource.settings.ipConfiguration.aclEntry{}.value"="0.0.0.0/0" "data.protoPayload.request.resource.settings.ipConfiguration.requireSsl"="true"
