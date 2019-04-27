@@ -1,0 +1,7 @@
+Bucket acls rule to search for public buckets
+
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.serviceData.policyDelta.bindingDeltas{}.action"="ADD" "data.protoPayload.serviceData.policyDelta.bindingDeltas{}.member"="allUsers"
+
+Bucket acls rule to search for exposed buckets
+
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.serviceData.policyDelta.bindingDeltas{}.action"="ADD" "data.protoPayload.serviceData.policyDelta.bindingDeltas{}.member"="allAuthenticatedUsers"
