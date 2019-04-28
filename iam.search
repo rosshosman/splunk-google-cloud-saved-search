@@ -1,0 +1,3 @@
+Allow only IAM members in my domain to be an OrgAdmin
+
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.request.@type"="type.googleapis.com/google.iam.v1.SetIamPolicyRequest" "data.protoPayload.request.policy.bindings{}.role"="roles/resourcemanager.organizationAdmin" NOT ("data.protoPayload.request.policy.bindings{}.members{}"="user:*@domain" OR "data.protoPayload.request.policy.bindings{}.members{}"="group:*@domain")
