@@ -1,0 +1,15 @@
+Indicates that a GKE Cluster was created with Alias IP ranges enabled.
+
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.request.@type"="*CreateClusterRequest" NOT "data.protoPayload.request.cluster.ipAllocationPolicy.useIpAliases"="*"
+
+Indicates that Legacy Authorization is enabled on GKE Clusters.
+
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.request.@type"="*CreateClusterRequest" NOT "data.protoPayload.request.cluster.legacyAbac.enabled"="*"
+
+Indicates that Master authorized networks is not enabled on GKE Clusters.
+
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.request.@type"="*CreateClusterRequest" NOT "data.protoPayload.request.cluster.masterAuthorizedNetworksConfig.enabled"="true" "masterAuthorizedNetworksConfig"
+
+Indicates that Stackdriver Monitoring is disabled on GKE Clusters
+
+
