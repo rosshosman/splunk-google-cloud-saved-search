@@ -2,4 +2,6 @@ Indicates that an instance is configured to use the default service account with
 
 sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.request.@type"="type.googleapis.com/compute.instances.insert" "data.protoPayload.request.serviceAccounts{}.email"="*-compute@developer.gserviceaccount.com" "data.protoPayload.request.serviceAccounts{}.scopes{}"="https://www.googleapis.com/auth/cloud-platform"
 
+Indicates that IP forwarding is enabled on Instances.
+
 sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.request.@type"="type.googleapis.com/compute.instances.insert" "data.protoPayload.request.canIpForward"="true"
