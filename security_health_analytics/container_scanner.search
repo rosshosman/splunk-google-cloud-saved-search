@@ -4,12 +4,16 @@ sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapi
 
 Indicates that Legacy Authorization is enabled on GKE Clusters.
 
-sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.request.@type"="*CreateClusterRequest" NOT "data.protoPayload.request.cluster.legacyAbac.enabled"="*"
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" ("data.protoPayload.request.@type"="*CreateClusterRequest" "data.protoPayload.request.cluster.legacyAbac.enabled"="*") OR ("data.protoPayload.methodName"="*.SetLegacyAbac" "data.protoPayload.request.enabled"="true")
 
 Indicates that Master authorized networks is not enabled on GKE Clusters.
 
-sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.request.@type"="*CreateClusterRequest" NOT "data.protoPayload.request.cluster.masterAuthorizedNetworksConfig.enabled"="true" "masterAuthorizedNetworksConfig"
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" ("data.protoPayload.request.@type"="*CreateClusterRequest" NOT "data.protoPayload.request.cluster.masterAuthorizedNetworksConfig.enabled"="true" "masterAuthorizedNetworksConfig") OR ("data.protoPayload.request.@type"="*UpdateClusterRequest" NOT "data.protoPayload.request.update.desiredMasterAuthorizedNetworksConfig.enabled"="true" "desiredMasterAuthorizedNetworksConfig")
 
 Indicates that Stackdriver Monitoring is disabled on GKE Clusters
 
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" ("data.protoPayload.request.@type"="*CreateClusterRequest" "data.protoPayload.request.cluster.monitoringService"="none") OR ("data.protoPayload.request.@type"="*UpdateClusterRequest" "data.protoPayload.request.update.desiredMonitoringService"="none")
 
+Indicates that Network policy is disabled on GKE Clusters.
+
+sourcetype="google:gcp:pubsub:message" "data.protoPayload.@type"="type.googleapis.com/google.cloud.audit.AuditLog" "data.protoPayload.request.@type"="*CreateClusterRequest" NOT "networkPolicy"
